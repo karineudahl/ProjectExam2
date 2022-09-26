@@ -1,0 +1,185 @@
+.accommodationDetail {   
+    .accommodationDetail__rating {
+        display: flex;
+        align-items: center;    
+    }
+
+    .accommodationDetail__icon {
+        color: $color-star;
+        margin: 0px 10px;
+        font-size: 1.5em;
+    }
+
+    h2 {
+        margin-top: 50px;
+    }
+
+    .accommodationDetail__about-contact {
+        text-decoration: underline;
+    }
+    
+    .accommodationDetail__about {
+        max-width: 860px;
+        margin: auto;
+    }
+}
+
+.accommodationDetail__imageCarousel {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 6px 6px 6px $color-dark-background;
+
+    @media (min-width: $mobile-large) {
+        width: 430px;
+        height: 430px;
+    }
+
+    @media (min-width: $tablet-min-width) {
+        width: 600px; 
+        height: 600px;
+    }
+    
+    @media (min-width: $computer-min-width) {
+        width: 860px;
+        height: 860px;
+    }
+
+    .accommodationDetail__imageCarousel-slide {
+        position: absolute;
+        opacity: 0;
+        transition: ease-in-out 1s;
+    }
+
+    .accommodationDetail__imageCarousel-images {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        
+            @media (min-width: $mobile-large) {
+                width: 430px;
+                height: 430px;
+            }
+    
+            @media (min-width: $tablet-min-width) {
+                width: 600px;
+                height: 600px;
+            }
+    
+            @media (min-width: $computer-min-width) {
+                width: 860px;
+                height: 860px;
+            }
+    }
+    
+    .accommodationDetail__imageCarousel-slide-active {
+        opacity: 1;
+    }
+
+    .accommodationDetail__imageCarousel-button {
+        width: 30px;
+        height: 30px;
+        color: $color-brand;
+        background-color: $color-dark-background;   
+        position: absolute;
+        cursor: pointer;
+    
+        @media (min-width: $tablet-min-width) {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    .right {
+        top: 50%;
+        right: 5px; 
+    }
+
+    .left {
+        top: 50%;
+        left: 5px;
+    }
+
+    .accommodationDetail__imageCarousel-dots {
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        
+        .accommodationDetail__imageCarousel-dots-dot {
+            width: 20px;
+            height: 20px;
+            border: 1px solid $color-dark-background;
+            margin: 0 5px;
+            background-color: $color-dark-background;
+        }
+        
+        .accommodationDetail__imageCarousel-dots-dot.active {
+            background-color: $color-brand;
+            transition: ease-in-out 0.5s;
+        }
+    }
+}
+
+.accommodationDetail__imageCarousel-smallimages {
+    @extend .flex-container;
+    margin-top: 10px;
+
+    .accommodationDetail__imageCarousel-smallimages {
+        height: 100px;
+        width: 100px;
+        object-fit: cover;
+        margin: 3px;
+        opacity: 0.6;
+        box-shadow: 6px 6px 6px $color-dark-background;
+
+        @media (min-width: $computer-min-width) {
+            height: 200px;
+            width: 200px;
+          }
+    }
+
+    .accommodationDetail__imageCarousel-smallimages.active {
+        border: 1px solid $color-brand;  
+        opacity: 1;
+        transition: ease-in-out 0.5s;
+    }
+}
+
+.accommodationDetail__popup {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+    overflow: auto;
+    max-height: 100%;
+    z-index: 100;
+    background-color: rgba($color-dark-background, 0.9) ;
+    @extend .page-animation;
+
+    .button-exit {
+        position: absolute;
+        top: 16px; 
+        right: 16px;
+
+        @media (min-width: $tablet-min-width) {
+            top: 53px; 
+            right: 16px;
+        }
+
+        @media (min-width: $computer-min-width) {
+            top: 53px; 
+            right: 50%;
+        }
+    }
+}
+
+.accommodationDetail__buttonContainer {
+    display: flex;
+    justify-content: center;
+}

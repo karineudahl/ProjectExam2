@@ -1,0 +1,44 @@
+.accommodationCard {
+    background-color: $color-white;
+    box-shadow: 6px 6px 6px $color-dark-background;
+    margin: 10px;
+    width: 300px;
+
+    @media (min-width: $computer-min-width) {
+        width: 400px;
+    }
+
+    img {
+        height: 300px;
+        object-fit: cover;
+    
+        @media (min-width: $computer-min-width) {
+          height: 400px;
+        }
+    }
+
+    .accommodationCard__text-name {
+        font-size: 1.2em;
+    }
+
+    .accommodationCard__text {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+        text-align: left;
+    }
+
+    .accommodationCard__text-icon {
+        display: flex;
+    }
+
+    .accommodationCard__icon {
+        color: $color-star;
+        font-size: 1.5em;
+        margin-top: 13px;
+    }
+    
+    &:hover {
+        transform: scale(1.02);
+    }
+}

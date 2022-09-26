@@ -1,0 +1,150 @@
+.form__layout {
+    background-color: $color-light-background;
+    padding: 20px 10px;
+    box-shadow: 6px 6px 6px $color-dark-background;
+    flex-grow: 1;
+    max-width: 800px;
+
+    @media (min-width: $tablet-min-width) {
+        padding: 50px 30px;
+    }
+
+    .form__layout-flex {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; 
+    }
+    
+    .form__layout-content {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        label {
+            position: absolute;
+            top: 0px;
+            padding: 0px;
+            margin-top: 40px;
+        }
+
+        select {
+            color: $color-black;
+            border-radius: 0px;
+        }
+
+        input, 
+        select,
+        textarea {
+            margin-top: 65px;
+            border: none;
+            padding: 15px 10px;
+            background-color: $color-dark-background;
+            border-bottom: 1.5px solid $color-button;
+
+            &:focus {
+                outline: none;
+                background-color: $color-light-background;
+                border-bottom: 1px solid $color-brand;
+                transition: 1s all;
+            }
+        }
+
+        input:focus + label,
+        textarea:focus + label {
+            font-size: 15px;
+            transition: 1s all;
+        }
+
+        .form__layout-content-images {
+            border-bottom: none;
+            background-color: $color-light-background;
+
+            &:focus {
+                border-bottom: none;
+            }
+        }
+
+        input::-webkit-file-upload-button {
+            padding: 15px;
+            box-shadow: 6px 6px 6px $color-dark-background;
+            cursor: pointer;
+            background-color: $color-star;
+            border: none;
+            border-radius: 0px;
+            color: $color-black;
+    
+            &:hover {
+                background-color: darken($color: $color-star, $amount: 10);
+                transform: scale(1.02);
+                transition: 0.5s;
+            }
+        }
+    }
+
+    .form__layout-content-radiobuttons {
+        input {
+            margin: 10px;
+        }
+
+        .form__layout-content-radiobuttons-label {
+            padding: 0px;
+            margin-right: 20px;
+        }
+
+        .form__layout-content-radiobuttons-text {
+            margin: 30px 0px 10px 0px;
+        }
+
+        input[type='radio'] {
+            appearance: none;
+            background: white;
+            outline: 1px solid $color-brand;
+            border: 1px solid $color-white;
+            margin-bottom: -5px;
+            height: 17px;
+            width: 17px;
+        }
+          
+        input[type='radio']:checked {
+            background: $color-brand;
+        }
+    }
+
+}
+
+.form__container-contact-login,
+.form__container-booking {
+    @extend .flex-container;
+    @include max-width(1300px);
+
+    @media (min-width: $tablet-min-width) {
+        flex-direction: row;
+    }
+}
+
+.form__container-contact-login {
+    .form__container-contact-login__information {
+        background-color: $color-brand;
+        color: $color-white;
+        padding: 40px 5px 40px 20px;
+        box-shadow: 6px 6px 6px $color-dark-background;
+        flex-grow: 1;
+    
+        a {
+            color: white;
+        }
+
+        @media (min-width: $tablet-min-width) {
+            padding: 50px 40px 50px 50px;
+        }
+    }
+}
+
+.form__container-add-product-heading {
+    display: flex;
+    align-items: center;
+}
+
+.form__container-booking-place {
+    display: none;
+}

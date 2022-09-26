@@ -1,0 +1,96 @@
+.searchTypeahead__input {
+    display: flex ;
+    justify-content: center;
+    margin-top: 80px;
+
+    .searchTypeahead__input-field {
+        background-color: $color-dark-background;
+        box-shadow: 6px 6px 6px $color-dark-background;
+        padding: 15px;
+        margin: 0px;
+        border: none;
+        width: 100%;
+    
+        &:focus {
+            outline: none;
+        }
+
+        @media (min-width: $computer-min-width) {
+            width: 50%;
+            margin: 10px 0px 0px 0px;
+        }
+    }
+
+    .searchTypeahead__input-icons {
+        height: 60px;
+        width: 50px;
+        display: grid;
+        place-items: center;
+        margin-top: 10px;
+        margin-left: -52px;
+        font-size: 1em;
+
+        @media (min-width: $tablet-min-width) {
+            font-size: 1.5em;
+            margin-left: -56px;
+        }
+
+        .searchTypeahead__input-icons-close {
+            cursor: pointer;
+        }
+    }
+}
+
+.searchTypeahead__error, 
+.searchTypeahead__loading {
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+.searchTypeahead__error {
+    color: $color-error-danger;
+}
+
+.searchTypeahead__results {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
+    margin: auto;
+
+    @media (min-width: $computer-min-width) {
+        width: 50%;
+        font-size: 1.2em;
+    }
+  
+    .searchTypeahead__results-icon {
+        color: $color-star;
+        margin: -5px 0px 0px 20px;
+    }
+
+    img {
+        height: 50px;
+        width: 50px;
+        margin-right: 15px;
+
+        @media (min-width: $tablet-min-width) {
+            height: 70px;
+            width: 70px;
+        }
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .searchTypeahead__results-link {
+        margin: 10px 0px;
+        display: flex;    
+        background-color: $color-light-background;;
+        box-shadow: 6px 6px 6px $color-dark-background;
+        
+        &:hover {
+            background-color: $color-white;
+        }
+    }
+}

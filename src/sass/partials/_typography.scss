@@ -1,0 +1,43 @@
+h1,
+h2,
+h3 {
+    font-family: $font-heading;
+}
+
+body,
+p,
+textarea,
+input {
+    font-family: $font-text;
+}
+
+h1 {
+    font-size: 1.5em;
+    margin: 30px 0px;
+    letter-spacing: 5px;
+  
+    @media (min-width: $tablet-min-width) {
+        font-size: 2em;
+        letter-spacing: 15px;
+    }
+
+    @media (min-width: $computer-min-width) {
+        font-size: 2.5em;
+    }
+}
+  
+h2 {
+    font-size: 1.3em;
+  
+    @media (min-width: $computer-min-width) {
+      font-size: 1.8em;
+    }
+}
+  
+h3 {
+    font-size: 1.1em;
+}
+  
+p {
+    font-size: 1em;
+}

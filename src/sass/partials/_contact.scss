@@ -1,0 +1,22 @@
+.contact__information-content {
+    display: flex;
+    margin: 20px 40px 0px 0px;
+  
+    a {
+        text-transform: lowercase;
+        text-decoration: underline;
+    }
+  
+    h3 {
+        margin-bottom: 20px;
+    }
+  
+    .contact__information-icon {
+        font-size: 1.2em;
+        margin: 20px 15px 0px 0px;
+
+        @media (min-width: $tablet-min-width) {
+            margin: 20px 35px 0px 0px;
+        }
+    }
+}
