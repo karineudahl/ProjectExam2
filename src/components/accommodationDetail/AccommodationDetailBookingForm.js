@@ -85,13 +85,13 @@ export function AccommodationDetailBookingForm({ accommodationDetail, loading, e
 
                         <div className="form__layout-flex">
                             <div className="form__layout-content">    
-                                <input {...register("checkin")} name="checkin" type="date" min={new Date().toISOString().split('T')[0]} />
+                                <input {...register("checkin")} name="checkin" className="form__layout-content-input" type="date" min={new Date().toISOString().split('T')[0]} />
                                 <label htmlFor="checkin">Check in</label>
                                 {errors.checkin && <span className="error-text">{errors.checkin.message}</span>}
                             </div>
 
                             <div className="form__layout-content">
-                                <input {...register("checkout")} name="checkout" type="date" min={new Date().toISOString().split('T')[0]} />
+                                <input {...register("checkout")} name="checkout" className="form__layout-content-input" type="date" min={new Date().toISOString().split('T')[0]} />
                                 <label htmlFor="checkout">Check out</label>
                                 {errors.checkout && <span className="error-text">{errors.checkout.message}</span>}
                             </div>
