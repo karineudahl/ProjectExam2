@@ -86,7 +86,7 @@ function AdminAddForm() {
 
                 <div className="form__layout-content">
                     <input type="number" name="phone" placeholder="Type in phone number to accommodation ..." {...register("phone")} />
-                    <label htmlFor="phone">Phone number to accommodation (8 numbers) *</label>
+                    <label htmlFor="phone">Phone number to accommodation *</label>
                     {errors.phone && <span className="error-text">{errors.phone.message}</span>}
                 </div>
                 
