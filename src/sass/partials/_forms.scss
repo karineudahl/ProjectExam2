@@ -77,11 +77,12 @@
             padding: 15px;
             box-shadow: 6px 6px 6px $color-dark-background;
             cursor: pointer;
-            background-color: red;
+            background-color: $color-star;
             border: none;
             border-radius: 0px;
             color: $color-black;
             height: 60px;
+            width: 130px;
     
             &:hover {
                 background-color: darken($color: $color-star, $amount: 10);
@@ -107,7 +108,7 @@
 
         input[type='radio'] {
             appearance: none;
-            background: white;
+            background: $color-white;
             outline: 1px solid $color-brand;
             border: 1px solid $color-white;
             margin-bottom: -5px;
@@ -117,9 +118,11 @@
           
         input[type='radio']:checked {
             background: $color-brand;
+            border-radius: 0px; 
+            height: 17px;
+            width: 17px;
         }
     }
-
 }
 
 .form__container-contact-login,
