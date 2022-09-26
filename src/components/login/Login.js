@@ -4,13 +4,11 @@ import { NavOrientation2 } from "../navigation/NavOrientation";
 
 function Login() {
     return (
-        <>
-            <div className="pageContainer">
-                <NavOrientation2 link1="/" name1="Home" link2="/login" name2="Login" />
-                <HeadingH1 content="Login"/>
-                <LoginForm />
-            </div>
-        </>
+        <div className="pageContainer">
+            <NavOrientation2 link1="/" name1="Home" link2="/login" name2="Login" />
+            <HeadingH1 content="Login"/>
+            <LoginForm />
+        </div>
     )
 }
 

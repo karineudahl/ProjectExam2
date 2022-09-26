@@ -33,13 +33,11 @@
             height: 50px;
         }
 
-        // input[type="date"] {
-        //     // height: 20px;
-        //     color: $color-black;
-        //     // font-size: 1em;
-        //     min-height: 2em;
-        //     padding: 15px 10px;
-        // }
+        input[type="date"] {
+            color: $color-black;
+            font-size: 1em;            
+            padding: 15px 10px;
+        }
 
         input, 
         select,
@@ -106,7 +104,7 @@
             margin: 30px 0px 10px 0px;
         }
 
-        input[type='radio'] {
+        input[type="radio"] {
             appearance: none;
             background: $color-white;
             outline: 1px solid $color-brand;
@@ -153,9 +151,14 @@
     }
 }
 
-.form__container-add-product-heading {
+.form__container-add-product {
     display: flex;
-    align-items: center;
+    justify-content: center;
+
+    .form__container-add-product-heading {
+        display: flex;
+        align-items: center;
+    }
 }
 
 .form__container-booking-place {

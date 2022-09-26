@@ -1,12 +1,12 @@
 .about {
     @include max-width(1050px);
-
+ 
     h2 {
         margin-bottom: 25px;
         flex-basis: 100%;
     }
 
-    .about__pictures {
+    .about__pictures { 
         @extend .flex-container;
         margin: 50px 0px 80px 0px;
     

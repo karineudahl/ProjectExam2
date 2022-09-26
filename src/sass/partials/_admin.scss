@@ -1,6 +1,5 @@
 .adminContainer {
-    display: flex;
-    flex-wrap: wrap;
+    @extend .flex-container;
     gap: 30px;
 
 
@@ -24,10 +23,18 @@
         }
     }
 
+    .messages,
+    .bookings {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
     .bookings-text {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: space-around;
         gap: 0px 70px;
     }
 

@@ -6,7 +6,6 @@ import LoadingMessage from "../common/LoadingMessage";
 import { BsHouseDoor, BsBorderAll } from "react-icons/bs";
 import { RiHotelLine, RiHotelBedLine } from "react-icons/ri";
 import AccommodationCard from "../common/AccommodationCard";
-
 export default function AccommodationSortByCategory() {
     const { data: accommodations, loading, error } = useFetch(API_accommodation + "?populate=*");
 
@@ -33,13 +32,15 @@ export default function AccommodationSortByCategory() {
         setFilterHotel(selectedCategory);
         setSearchField(""); 
         setActive(catItem);
-        displayNone.style.display = "none"; 
+        displayNone.style.display = "none";  
     }
 
     return ( 
         <>
-            <input onChange={event => {setSearchField(event.target.value)}} type="search" placeholder="Search accommodation ..." className="searchAccommodation"/>
-
+            <div className="searchAccommodation">
+                <input onChange={event => {setSearchField(event.target.value)}} type="search" placeholder="Search accommodation ..." className="searchAccommodation-field" />    
+            </div>
+                  
             <div className="sortByCategory">
                 <button onClick={() => accommodationType("all")} className={active === "all" ? "sortByCategory__button-active" : "sortByCategory__button" }><BsBorderAll className="sortByCategory__icon"/>All</button>
                 <button onClick={() => accommodationType("BedBreakfast")} className={active === "BedBreakfast" ? "sortByCategory__button-active" : "sortByCategory__button" }><BsHouseDoor className="sortByCategory__icon"/>B&B</button>

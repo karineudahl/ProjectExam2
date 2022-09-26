@@ -37,7 +37,7 @@ export default function SearchTypeahead({ placeholder, data, loading, error }) {
     function clearInput() { 
         setFilteredData([]);
         setTypedWord("");
-    }
+    } 
 
     return (
         <>

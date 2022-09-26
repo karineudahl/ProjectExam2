@@ -3,8 +3,9 @@
 }
 
 .sortByCategory {
-  display: flex;
-  margin: 10px 0px 30px 0px;
+    display: flex;
+    margin: 10px 0px 30px 0px;
+    justify-content: center;
 
     .sortByCategory__button,
     .sortByCategory__button-active {
@@ -38,20 +39,28 @@
 }
 
 .searchAccommodation {
-    background-color: $color-dark-background;
-    box-shadow: 6px 6px 6px $color-dark-background;
-    padding: 15px 10px;
-    margin: 10px 0px 30px 0px;
-    border: none;
-    width: 300px;
+    text-align: center;
+    
+    .searchAccommodation-field {
+        background-color: $color-dark-background;
+        box-shadow: 6px 6px 6px $color-dark-background;
+        padding: 15px 10px;
+        margin: 10px 0px 30px 0px;
+        border: none;
+        width: 300px;
+    
+        @media (min-width: $tablet-min-width) {
+            width: 400px;
+        }
 
-    @media (min-width: $tablet-min-width) {
-        width: 400px;
-    }
-
-    &:focus {
-        outline: none;
-        background-color: $color-light-background;
-        transition: 1s all;
+        @media (min-width: $computer-min-width) {
+            width: 600px;
+        }
+    
+        &:focus {
+            outline: none;
+            background-color: $color-light-background;
+            transition: 1s all;
+        }
     }
 }
