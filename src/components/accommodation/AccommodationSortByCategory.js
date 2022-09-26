@@ -21,7 +21,7 @@ export default function AccommodationSortByCategory() {
             setFilterHotel(accommodations); 
             setActive("all")
             return;
-        }
+        } 
 
         const selectedCategory = accommodations.filter((curDate) => {
             if(curDate.attributes.typeofaccommodation === catItem) {              
