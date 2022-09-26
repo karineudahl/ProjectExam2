@@ -14,7 +14,7 @@ export default function AccommodationSortByCategory() {
     const [searchField, setSearchField] = useState(""); 
     const [active, setActive] = useState(""); 
 
-    const displayNone = document.querySelector(".display-none")
+    const displayNone = document.querySelector(".display-none") 
 
     const accommodationType = (catItem) => {
         if(catItem === "all")  {
