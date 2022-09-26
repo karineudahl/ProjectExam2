@@ -33,13 +33,15 @@
             height: 50px;
         }
 
-        input[type="date"] {
-            // height: 20px;
-            color: $color-black;
-            // font-size: 1em;
-            min-height: 2em;
-            padding: 15px 10px;
-        }
+        // input[type="date"] {
+        //     // height: 20px;
+        //     color: $color-black;
+        //     // font-size: 1em;
+        //     min-height: 2em;
+        //     padding: 15px 10px;
+        // }
+
+        input.translatable, select.form-dropdown.d, select.form-dropdown.m, select.form-dropdown.y, input.stepper { height: 30px ; }
 
         input, 
         select,
