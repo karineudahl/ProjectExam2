@@ -91,7 +91,7 @@ export function AccommodationDetailBookingForm({ accommodationDetail, loading, e
                             </div>
 
                             <div className="form__layout-content">
-                                <input {...register("checkout")} name="checkout" type="date" min={new Date().toISOString().split('T')[0]} />
+                                <input {...register("checkout")} name="checkout" placeholder="dd/mm/yyyy" type="date" onfocus = "(this.type = 'date')" min={new Date().toISOString().split('T')[0]} />
                                 <label htmlFor="checkout">Check out</label>
                                 {errors.checkout && <span className="error-text">{errors.checkout.message}</span>}
                             </div>
