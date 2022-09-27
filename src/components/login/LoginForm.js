@@ -64,7 +64,7 @@ export default function LoginForm() {
 				</div>
 
 				<div className="form__layout-content">
-					<input {...register("password")} />		
+					<input {...register("password")} type="password" />		
 					<label htmlFor="password">Password *</label>
 					{errors.password && <span className="error-text">{errors.password.message}</span>}
 				</div>		

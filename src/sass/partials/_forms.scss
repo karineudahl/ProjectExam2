@@ -12,7 +12,7 @@
     .form__layout-flex {
         display: flex;
         flex-wrap: wrap;
-        gap: 20px; 
+        gap: 0px 20px; 
     }
     
     .form__layout-content {
@@ -161,6 +161,12 @@
     }
 }
 
-.form__container-booking-place {
-    display: none;
+.form__container-booking {
+    h2 {
+        margin-top: 40px;
+    }
+
+    .form__container-booking-place {
+        display: none;
+    }
 }
