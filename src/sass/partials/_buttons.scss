@@ -60,7 +60,8 @@
 
 .button-logout,
 .button-delete,
-.button-exit {
+.button-exit,
+.button-popup {
     background-color: $color-error-danger;
     color: $color-white;
     border: none;
@@ -83,6 +84,11 @@
 }
 
 .button-logout {
+    @media (max-width: $computer-min-width) {
+        width: 150px;
+        margin: 20px auto;
+    }
+
     @media (min-width: $computer-min-width) {
         margin-left: 20px;
     }
@@ -95,20 +101,10 @@
 
 .button-popup {
     background-color: $color-button;
-    color: $color-white;
-    border: none;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 10px;
-    text-transform: uppercase;
-    box-shadow: 6px 6px 6px $color-dark-background;
     width: 100%;
 
     &:hover {
         background-color: darken($color: $color-button, $amount: 10);
-        transition: 1s;
-        text-decoration: underline;
-        cursor: pointer;
     }
 
     &:active {

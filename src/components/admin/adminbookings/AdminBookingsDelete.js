@@ -7,7 +7,7 @@ export default function AdminBookingsDelete( {id} ) {
     const url = `/bookings/${id}`;
 
     async function handleDelete() {
-        const doDelete = window.confirm("Do you want to delete this booking?");
+        const doDelete = window.confirm(`Do you want to delete this booking?`);
 
         if (doDelete) {
             try {
@@ -20,6 +20,6 @@ export default function AdminBookingsDelete( {id} ) {
     }
 
     return (
-        <button onClick={handleDelete} type="button" className="button-delete">{error ? "An error occured, booking is not deleted, try to log in." : "Delete Booking" } </button>
+        <button onClick={handleDelete} type="button" className="button-delete">{error ? "An error occured, booking is not deleted, try to log in." : "Delete Booking"}</button>
     )
 }

@@ -2,7 +2,7 @@ import { TiStar } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import { Paragraph } from "../layout/Paragraph";
 
-export default function AccommodationCard({accommodation}) {
+export default function AccommodationCard({ accommodation }) {
     return (
         <div key={accommodation.id} className="accommodationCard">      
             <Link to={`/detail/${accommodation.id}`}>

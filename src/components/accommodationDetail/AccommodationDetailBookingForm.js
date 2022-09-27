@@ -13,8 +13,8 @@ import AccommodationDetailBookingPopUp from "./AccommodationDetailBookingPopUp";
 const schema = yup.object().shape({
     firstname: yup.string().required("Please enter your first name").min(2, "Name must be at least two characters"),
     lastname: yup.string().required("Please enter your last name").min(2, "Name must be at least two characters"),
-    phonenumber: yup.string().required("Please enter a number").min(8, "Minimum 8 numbers").max(8, "Maximum 8 numbers"),
-    email: yup.string().required("Please enter accommodation email").email("Please enter a valid email address"),
+    phonenumber: yup.string().required("Please enter your phone number").min(8, "Minimum 8 numbers").max(8, "Maximum 8 numbers"),
+    email: yup.string().required("Please enter your email").email("Please enter a valid email address"),
     numberofpeople: yup.number().transform(value => isNaN(value) ? undefined : value).required("Please select number of people"),
     numberofrooms: yup.number().transform(value => isNaN(value) ? undefined : value).required("Please select number of rooms"),
     checkin: yup.string().required("Select check in date"),
@@ -22,38 +22,28 @@ const schema = yup.object().shape({
 });
 
 export function AccommodationDetailBookingForm({ accommodationDetail, loading, error }) {
-    const { register, handleSubmit, resetField, formState: { errors } } = useForm({resolver: yupResolver(schema),});
+    const { register, handleSubmit, formState: { errors } } = useForm({resolver: yupResolver(schema),});
 
     const [submitting, setSubmitting] = useState(false);  
     const [addError, setAddError] = useState(null); 
+    const [button, setButton] = useState(false); 
+
     const url = API_bookings;
     
     const [buttonPopup, setButtonPopup] = useState(false); 
 
     async function onSubmit(dataForm) {
-        resetField("checkin");
-        resetField("checkout");
-        resetField("firstname"); 
-        resetField("lastname");
-        resetField("phonenumber");
-        resetField("email");
-        resetField("numberofpeople"); 
-        resetField("numberofrooms");
-        
-        setSubmitting(true); 
-        setAddError(null);
-
         const formData = new FormData();
-
         const { image, ...data } = dataForm;
         formData.append("data", JSON.stringify(data));
     
         try {
             await axios.post(url, formData);
-        } catch (error) {
-            setAddError("An erroc occured");
-        } finally {
             setSubmitting(`Hi, ${dataForm.firstname}. Thank you for booking ${dataForm.numberofrooms} room(s) for ${dataForm.numberofpeople} persons at ${dataForm.accommodation} from ${Moment(dataForm.checkin).format('LL')} to ${Moment(dataForm.checkout).format('LL')}. Looking forward to see you in Bergen!`);
+        } catch (error) {
+            setAddError(`An error occured ${error}`);
+        } finally {
+            setButton(false);
         }
     }
 
@@ -65,7 +55,6 @@ export function AccommodationDetailBookingForm({ accommodationDetail, loading, e
                     <div className="button-background"></div>
                 </div>
             </div>
-            
             <AccommodationDetailBookingPopUp trigger={buttonPopup} setTrigger={setButtonPopup}>
                 <div className="form__container-booking">
                     { loading && <LoadingMessage content="Loading accommodation ..."/>}
@@ -77,10 +66,10 @@ export function AccommodationDetailBookingForm({ accommodationDetail, loading, e
                         {addError && <ErrorMessage>{addError}</ErrorMessage>}
 
                         <div className="form__container-booking-place">
-                        <label htmlFor="accommodation">Place</label>
-                        <select {...register("accommodation")}>
-                            <option value={accommodationDetail.attributes.name} name="accommodation">{accommodationDetail.attributes.name}</option>
-                        </select>
+                            <label htmlFor="accommodation">Place</label>
+                            <select {...register("accommodation")}>
+                                <option value={accommodationDetail.attributes.name} name="accommodation">{accommodationDetail.attributes.name}</option>
+                            </select>
                         </div>
 
                         <div className="form__layout-flex">
@@ -111,7 +100,7 @@ export function AccommodationDetailBookingForm({ accommodationDetail, loading, e
 
                         <div className="form__layout-content">
                             <input type="number" name="phonenumber" placeholder="Type in your mobil number ..." {...register("phonenumber")} />
-                            <label htmlFor="phonenumber">Phone number (8 numbers) *</label>
+                            <label htmlFor="phonenumber">Phone number *</label>
                             {errors.phonenumber && <span className="error-text">{errors.phonenumber.message}</span>}
                         </div>
 
@@ -145,7 +134,7 @@ export function AccommodationDetailBookingForm({ accommodationDetail, loading, e
                         </div>
 
                         <div className="button-container">
-                            <button className="button booking">{submitting ? "Booking in process..." : "Book"}</button>            
+                            <button className="button booking">{button ? "Booking in process..." : "Book"}</button>            
                             <div className="button-background"></div>
                         </div>
                     </form>

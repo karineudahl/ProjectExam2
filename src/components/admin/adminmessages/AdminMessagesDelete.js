@@ -7,7 +7,7 @@ export default function AdminMessagesDelete( {id} ) {
     const url = `/messages/${id}`;
 
     async function handleDelete() {
-        const doDelete = window.confirm("Do you want to delete this message?");
+        const doDelete = window.confirm(`Do you want to delete this message?`);
 
         if (doDelete) {
             try {
@@ -20,6 +20,6 @@ export default function AdminMessagesDelete( {id} ) {
     }
 
     return (
-        <button onClick={handleDelete} type="button" className="button-delete">{error ? "An error occured, message is not deleted, try to log in." : "Delete message" } </button>
+        <button onClick={handleDelete} type="button" className="button-delete">{error ? "An error occured, message is not deleted, try to log in." : "Delete message"}</button>
     )
 }

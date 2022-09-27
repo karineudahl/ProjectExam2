@@ -23,10 +23,10 @@ export default function AccommodationDetailImageSlider( {accommodationDetail} ) 
         setSlideIndex(index)
     }
 
-    useEffect(()=>{
-        const interval = setInterval(()=>{
+    useEffect(() => {
+        const interval = setInterval(() => {
             nextSlide();        
-        }, 5000);
+        }, 6000);
         return () => clearInterval(interval);
     });
 

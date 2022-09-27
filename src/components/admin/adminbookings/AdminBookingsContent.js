@@ -22,7 +22,7 @@ export default function AdminBookingsContent() {
                             <HeadingH2 content="Booking" /> 
                             <Paragraph content={"(Booked: " + booking.attributes.createdAt.slice(0,10) + ")"} />
                         </div>
-                        <div className="adminContainer bookings-text">
+                        <div className="adminContainer__bookings-text">
                             <div> 
                                 <Paragraph content={"Accommodation name:"} fontWeight="600" />
                                 <Paragraph content={booking.attributes.accommodation} />   

@@ -16,7 +16,7 @@
     }
     
     .form__layout-content {
-        display: flex;
+        display: flex; 
         flex-direction: column;
         position: relative;
 
@@ -142,7 +142,7 @@
         flex-grow: 1;
     
         a {
-            color: white;
+            color: $color-white;
         }
 
         @media (min-width: $tablet-min-width) {

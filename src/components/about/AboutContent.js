@@ -33,7 +33,7 @@ export default function AboutContent() {
                     <figcaption>Daniel</figcaption>
                     <figcaption>Booking manager</figcaption>
                 </figure>
-            </div>
+            </div> 
             <div className="about__vision">
                 <h2><BsHouseDoor className="about__vision-icon" />Our Vision</h2>
                 <Paragraph content="The about page is an important page. You have to show your customers that they can trust you. Be truthful and open." />

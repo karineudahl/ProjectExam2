@@ -10,8 +10,6 @@ import { API_base } from "../../constants/Api";
 import { HeadingH2 } from "../layout/Headings";
 import { Paragraph } from "../layout/Paragraph";
 
-const url = API_base + "auth/local";
-
 const schema = yup.object().shape({
     identifier: yup.string().required("Please enter your username"),
     password: yup.string().required("Please enter your password"),
@@ -21,6 +19,7 @@ export default function LoginForm() {
     const [submitting, setSubmitting] = useState(false); 
 	const [loginError, setLoginError] = useState(null); 
 
+	const url = API_base + "auth/local";
 	let navigate = useNavigate();
 	
 	const { register, handleSubmit, formState: { errors } } = useForm({
@@ -39,7 +38,7 @@ export default function LoginForm() {
 			setAuth(response.data);
 			navigate("/admin"); 
 		} catch (error) {
-			setLoginError("Wrong username or password");
+			setLoginError(`Wrong username or password`);
 		} finally {
 			setSubmitting(false)
 		}

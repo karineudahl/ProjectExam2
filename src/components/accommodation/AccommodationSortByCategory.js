@@ -6,6 +6,7 @@ import LoadingMessage from "../common/LoadingMessage";
 import { BsHouseDoor, BsBorderAll } from "react-icons/bs";
 import { RiHotelLine, RiHotelBedLine } from "react-icons/ri";
 import AccommodationCard from "../common/AccommodationCard";
+
 export default function AccommodationSortByCategory() {
     const { data: accommodations, loading, error } = useFetch(API_accommodation + "?populate=*");
 
@@ -15,15 +16,15 @@ export default function AccommodationSortByCategory() {
 
     const displayNone = document.querySelector(".display-none") 
 
-    const accommodationType = (catItem) => {
-        if(catItem === "all")  {
+    const accommodationType = (categoryItem) => {
+        if(categoryItem === "all")  {
             setFilterHotel(accommodations); 
             setActive("all")
             return;
         } 
 
-        const selectedCategory = accommodations.filter((curDate) => {
-            if(curDate.attributes.typeofaccommodation === catItem) {              
+        const selectedCategory = accommodations.filter((currentItem) => {
+            if(currentItem.attributes.typeofaccommodation === categoryItem) {              
                 return true;
             }
             return false;
@@ -31,7 +32,7 @@ export default function AccommodationSortByCategory() {
 
         setFilterHotel(selectedCategory);
         setSearchField(""); 
-        setActive(catItem);
+        setActive(categoryItem);
         displayNone.style.display = "none";  
     }
 
@@ -39,8 +40,7 @@ export default function AccommodationSortByCategory() {
         <>
             <div className="searchAccommodation">
                 <input onChange={event => {setSearchField(event.target.value)}} type="search" placeholder="Search accommodation ..." className="searchAccommodation-field" />    
-            </div>
-                  
+            </div>         
             <div className="sortByCategory">
                 <button onClick={() => accommodationType("all")} className={active === "all" ? "sortByCategory__button-active" : "sortByCategory__button" }><BsBorderAll className="sortByCategory__icon"/>All</button>
                 <button onClick={() => accommodationType("BedBreakfast")} className={active === "BedBreakfast" ? "sortByCategory__button-active" : "sortByCategory__button" }><BsHouseDoor className="sortByCategory__icon"/>B&B</button>

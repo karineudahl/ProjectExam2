@@ -6,7 +6,7 @@ function Login() {
     return (
         <div className="pageContainer">
             <NavOrientation2 link1="/" name1="Home" link2="/login" name2="Login" />
-            <HeadingH1 content="Login"/>
+            <HeadingH1 content="Login" />
             <LoginForm />
         </div>
     )

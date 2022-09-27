@@ -19,18 +19,13 @@
     }
     
     .accommodationDetail__about {
-        max-width: 860px;
-        margin: auto;
-    }
+        @include max-width(860px);
+    } 
 }
 
-.accommodationDetail__imageCarousel {
+.image-size {
     width: 300px;
     height: 300px;
-    margin: auto;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 6px 6px 6px $color-dark-background;
 
     @media (min-width: $mobile-large) {
         width: 430px;
@@ -46,6 +41,14 @@
         width: 860px;
         height: 860px;
     }
+}
+
+.accommodationDetail__imageCarousel {
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 6px 6px 6px $color-dark-background;
+    @extend .image-size;
 
     .accommodationDetail__imageCarousel-slide {
         position: absolute;
@@ -54,24 +57,8 @@
     }
 
     .accommodationDetail__imageCarousel-images {
-        width: 300px;
-        height: 300px;
         object-fit: cover;
-        
-            @media (min-width: $mobile-large) {
-                width: 430px;
-                height: 430px;
-            }
-    
-            @media (min-width: $tablet-min-width) {
-                width: 600px;
-                height: 600px;
-            }
-    
-            @media (min-width: $computer-min-width) {
-                width: 860px;
-                height: 860px;
-            }
+        @extend .image-size;
     }
     
     .accommodationDetail__imageCarousel-slide-active {
@@ -79,12 +66,12 @@
     }
 
     .accommodationDetail__imageCarousel-button {
-        width: 30px;
-        height: 30px;
         color: $color-brand;
         background-color: $color-dark-background;   
         position: absolute;
         cursor: pointer;
+        width: 30px;
+        height: 30px;
     
         @media (min-width: $tablet-min-width) {
             width: 60px;
@@ -113,7 +100,7 @@
             width: 20px;
             height: 20px;
             border: 1px solid $color-dark-background;
-            margin: 0 5px;
+            margin: 0px 5px;
             background-color: $color-dark-background;
         }
         

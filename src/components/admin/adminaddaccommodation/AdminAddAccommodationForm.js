@@ -7,7 +7,7 @@ import ErrorMessage from "../../common/ErrorMessage";
 import { API_accommodation } from '../../../constants/Api';
 import AdminAddAccommodationRating from './AdminAddAccommodationRating';
 import useAxios from "../../hooks/useAxios"; 
-import { BsPlusSquare } from 'react-icons/bs';
+import { BsPlusSquare } from "react-icons/bs";
 
 const schema = yup.object().shape({
     typeofaccommodation: yup.string().oneOf(["Guesthouse", "BedBreakfast","Hotel"]).label("Type of accommodation"),
@@ -22,7 +22,7 @@ const schema = yup.object().shape({
     image: yup.mixed().required("You need to upload images").test("type", "Upload images in jpeg formt", (value) => { return value && value?.[0]?.type === "image/jpeg"; }),
 });
 
-function AdminAddForm() {
+export default function AdminAddForm() {
     const { register, handleSubmit, formState: { errors } } = useForm({resolver: yupResolver(schema),});
 
     const [submitting, setSubmitting] = useState(false); 
@@ -48,11 +48,8 @@ function AdminAddForm() {
         try {
             await userLoggedIn.post(url, formData);
             navigate("/admin");
-            
         } catch (error) {
-            setAddError("An erroc occured");
-            console.log(error)
-             
+            setAddError(`An error occured ${error}`);             
         } finally {
             setSubmitting(false);
         }
@@ -65,6 +62,7 @@ function AdminAddForm() {
                     <BsPlusSquare className="adminContainer-icon add-icon" />
                     <h2>Add accommodation</h2>
                 </div>
+
                 {addError && <ErrorMessage>{addError}</ErrorMessage>}
                 
                 <div className="form__layout-content">             
@@ -147,5 +145,3 @@ function AdminAddForm() {
         </div>
     );
 }
-
-export default AdminAddForm;

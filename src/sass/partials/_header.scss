@@ -7,6 +7,7 @@
 
     img {
         width: 90px;
+        height: 100%;
 
         @media (min-width: $computer-min-width) { 
             width: 150px;
@@ -50,11 +51,11 @@
 }
 
 .navigationHeader__navComputer {
+    padding: 30px 40px;
+
     @media (max-width: $computer-min-width) {
         display: none;
     }
-
-    padding: 30px 40px;
 
     a {
         margin-left: 10px;

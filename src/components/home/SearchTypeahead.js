@@ -22,7 +22,7 @@ export default function SearchTypeahead({ placeholder, data, loading, error }) {
         });
 
         if(newFilter.length === 0) {
-            setNoMatch("No accommodations includes " + typedWord ); 
+            setNoMatch(`No accommodations includes ${typedWord}`); 
         } else {
             setNoMatch("");
         }

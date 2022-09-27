@@ -9,23 +9,19 @@ import { API_messages } from "../../constants/Api";
 import PopupMessage from "../common/PopupMessage";
 
 const schema = yup.object().shape({
-    name: yup.string().required("Please enter your name").min(2, "First name must be at least two characters"),
+    name: yup.string().required("Please enter your name").min(2, "Name must be at least two characters"),
     email: yup.string().required("Please enter your email address").email("Please enter a valid email address"),
-    message: yup.string().required("Please enter your message").min(10, "The message must be at least 10 characters"),
+    message: yup.string().required("Please enter your message").min(10, "Message must be at least 10 characters"),
 });
 
 export default function ContactForm() {
-    const { register, resetField, handleSubmit, formState: { errors } } = useForm({resolver: yupResolver(schema),});
+    const { register, handleSubmit, formState: { errors } } = useForm({resolver: yupResolver(schema),});
 
     const [submitting, setSubmitting] = useState(null); 
-    const [loginError, setLoginError] = useState(null); 
+    const [submittingError, setSubmittingError] = useState(null); 
     const [button, setButton] = useState(false); 
 
     async function onSubmit(dataFromForm) {
-        resetField("name");
-        resetField("email"); 
-        resetField("message");
-
         try {
             await axios.post(
                 API_messages, 
@@ -36,20 +32,20 @@ export default function ContactForm() {
                         messagetext: dataFromForm.message,
                     }
                 });
-		} catch (error) {
-            setLoginError(`Wrong username or password`);
-		} finally {
             setSubmitting(`Thank you for your message, ${dataFromForm.name}. We will answer to ${dataFromForm.email} as soon as possible.`);
+		} catch (error) {
+            setSubmittingError(`An error occured ${error}`);
+		} finally {
             setButton(false);
 		}
     }
 
     return ( 
-        <div className="form__container-contact-login">
-            {submitting && <PopupMessage trigger={true} children={submitting} button="/" buttonName="Home"></PopupMessage>}
-            {loginError && <ErrorMessage>{loginError}</ErrorMessage>}
+        <div className="form__container-contact-login">      
             <form className="form__layout" onSubmit={handleSubmit(onSubmit)}>
                 <h2>Send us a message</h2>
+                {submitting && <PopupMessage trigger={true} children={submitting} button="/" buttonName="Home"></PopupMessage>}
+                {submittingError && <ErrorMessage>{submittingError}</ErrorMessage>}
 
                 <div className="form__layout-content">
                     <input {...register("name")} placeholder="Your Name"/>
@@ -64,7 +60,7 @@ export default function ContactForm() {
                 </div>
 
                 <div className="form__layout-content">
-                    <textarea {...register("message")} rows="8" placeholder="Write your message"/>
+                    <textarea {...register("message")} rows="8" placeholder="Your message"/>
                     <label htmlFor="message">Message *</label>
                     {errors.message && <span className="error-text">{errors.message.message}</span>}
                 </div>

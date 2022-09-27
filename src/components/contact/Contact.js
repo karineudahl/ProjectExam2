@@ -6,7 +6,7 @@ function Contact() {
     return (
         <div className="pageContainer">
             <NavOrientation2 link1="/" name1="Home" link2="/contact" name2="Contact" />
-            <HeadingH1 content="Contact"/>
+            <HeadingH1 content="Contact" />
             <ContactForm />
         </div> 
     )

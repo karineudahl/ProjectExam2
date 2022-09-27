@@ -6,7 +6,7 @@ function AdminBookings() {
     return (
         <div className="pageContainer">
             <NavOrientation2 link1="/admin" name1="Admin" link2="/adminbookings" name2="Bookings" />
-            <HeadingH1 content="Bookings"/>        
+            <HeadingH1 content="Bookings" />        
             <AdminBookingsContent />
         </div>
     )

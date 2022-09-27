@@ -6,7 +6,7 @@ function AdminMessages() {
     return (
         <div className="pageContainer"> 
             <NavOrientation2 link1="/admin" name1="Admin" link2="/adminmessages" name2="Messages" />
-            <HeadingH1 content="Messages"/>
+            <HeadingH1 content="Messages" />
             <AdminMessagesContent />
         </div> 
     )

@@ -2,7 +2,6 @@
     @extend .flex-container;
     gap: 30px;
 
-
     .adminContainer__content {
         background-color: $color-light-background;
         box-shadow: 6px 6px 6px $color-dark-background;
@@ -30,16 +29,15 @@
         justify-content: space-between;
     }
 
-    .bookings-text {
+    .adminContainer__bookings-text {
         display: flex;
-        flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-around;
         gap: 0px 70px;
     }
 
     .adminContainer__heading-container {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
 
         h2 {
