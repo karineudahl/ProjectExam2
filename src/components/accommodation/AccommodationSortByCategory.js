@@ -10,8 +10,7 @@ import AccommodationCard from "../common/AccommodationCard";
 export default function AccommodationSortByCategory() {
     const { data: accommodations, loading, error } = useFetch(API_accommodation + "?populate=*");
 
-    const [filterHotel, setFilterHotel] = useState([])
-    const [searchField, setSearchField] = useState(""); 
+    const [filterHotel, setFilterHotel] = useState([]) 
     const [active, setActive] = useState(""); 
 
     const displayNone = document.querySelector(".display-none") 
@@ -30,17 +29,13 @@ export default function AccommodationSortByCategory() {
             return false;
         })
 
-        setFilterHotel(selectedCategory);
-        setSearchField(""); 
+        setFilterHotel(selectedCategory); 
         setActive(categoryItem);
         displayNone.style.display = "none";  
     }
 
     return ( 
-        <>
-            <div className="searchAccommodation">
-                <input onChange={event => {setSearchField(event.target.value)}} type="search" placeholder="Search accommodation ..." className="searchAccommodation-field" />    
-            </div>         
+        <>        
             <div className="sortByCategory">
                 <button onClick={() => accommodationType("all")} className={active === "all" ? "sortByCategory__button-active" : "sortByCategory__button" }><BsBorderAll className="sortByCategory__icon"/>All</button>
                 <button onClick={() => accommodationType("BedBreakfast")} className={active === "BedBreakfast" ? "sortByCategory__button-active" : "sortByCategory__button" }><BsHouseDoor className="sortByCategory__icon"/>B&B</button>
@@ -52,22 +47,12 @@ export default function AccommodationSortByCategory() {
             { accommodations && 
                 <>
                     <div className="acoommodationList">
-                        {filterHotel.filter((accommodation => {
-                        if(accommodation.attributes.name.toLowerCase().includes(searchField.toLowerCase())) {
-                            return true;
-                        } 
-                        return false;
-                        })).map((accommodation) => {                
+                        {filterHotel.map((accommodation) => {                
                             return <AccommodationCard key={accommodation.id} accommodation={accommodation} />
                         })}
                     </div>
                     <div className="acoommodationList display-none">
-                        {accommodations.filter((accommodation => {
-                        if(accommodation.attributes.name.toLowerCase().includes(searchField.toLowerCase())) {
-                            return true;
-                        }
-                        return false;
-                        })).map((accommodation) => {                
+                        {accommodations.map((accommodation) => {                
                             return <AccommodationCard key={accommodation.id} accommodation={accommodation} />
                         })}
                     </div>
