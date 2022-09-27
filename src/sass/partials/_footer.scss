@@ -20,6 +20,10 @@ footer {
     flex-shrink: 0;  
     margin-top: 120px;
 
+    img {
+        width: 100%;
+    }
+
     .footer__information {
         @extend .flex-container;
         align-items: center;
