@@ -1,5 +1,9 @@
 # Project Exam 2
 
+- Link to the live version of the site: https://project-exam2-beryl.vercel.app/
+- Prototype XD Mobile: https://xd.adobe.com/view/24eb70c2-0ca2-4863-91d5-a3321cb19fcd-71b8/screen/8a9cdb84-71b5-4cdd-b06d-86566691187f/?fullscreen
+- Prototype XD Web: https://xd.adobe.com/view/6307ede6-0097-4814-95d3-3067252b8fa3-3654/?fullscreen
+
 ## Login Details
 
 Username: Karine
