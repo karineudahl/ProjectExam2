@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { HeadingH2 } from "../../layout/Headings";
 import useFetch from "../../hooks/useFetch";
 import { API_messages } from "../../../constants/Api";
@@ -6,15 +7,17 @@ import ErrorMessage from "../../common/ErrorMessage";
 import LoadingMessage from "../../common/LoadingMessage";
 import { TbMail } from "react-icons/tb";
 import AdminMessagesDelete from "./AdminMessagesDelete";
+import AuthContext from "../../context/AuthContext";
 
 export default function AdminMessagesContent() {
     const { data: messages, loading, error } = useFetch(API_messages);
+    const [auth] = useContext(AuthContext);
 
     return (
         <> 
             { error && <ErrorMessage>An error has occured {error}</ErrorMessage>}
             { loading && <LoadingMessage content="Loading messages ..." />}
-            { messages && <div className="adminContainer">
+            { auth ? messages && <div className="adminContainer">
                 {messages.map((message) => (              
                     <div key={message.id} className="adminContainer__content messages">  
                         <div>
@@ -37,7 +40,7 @@ export default function AdminMessagesContent() {
                         <AdminMessagesDelete id={message.id} />
                     </div>
                 ))}
-            </div>}
+            </div> : <ErrorMessage>{"You have to log in to read messages."}</ErrorMessage> }
         </> 
     )
 }

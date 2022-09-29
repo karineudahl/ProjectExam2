@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import ErrorMessage from "../../common/ErrorMessage";
@@ -8,6 +8,7 @@ import { API_accommodation } from '../../../constants/Api';
 import AdminAddAccommodationRating from './AdminAddAccommodationRating';
 import useAxios from "../../hooks/useAxios"; 
 import { BsPlusSquare } from "react-icons/bs";
+import AuthContext from "../../context/AuthContext";
 
 const schema = yup.object().shape({
     typeofaccommodation: yup.string().oneOf(["Guesthouse", "BedBreakfast","Hotel"]).label("Type of accommodation"),
@@ -28,13 +29,15 @@ export default function AdminAddForm() {
     const [submitting, setSubmitting] = useState(false); 
     const [addError, setAddError] = useState(null); 
 
+    const [auth] = useContext(AuthContext);
+
     let navigate = useNavigate();
     const url = API_accommodation + "?populate=*"
     const userLoggedIn = useAxios();
 
     async function onSubmit(dataForm) {
         setSubmitting(true); 
-        setAddError(null);
+        setAddError(null); 
 
         const formData = new FormData();
     
@@ -57,6 +60,7 @@ export default function AdminAddForm() {
 
     return ( 
         <div className="form__container-add-product"> 
+            {auth ? 
             <form className="form__layout" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form__container-add-product-heading">
                     <BsPlusSquare className="adminContainer-icon add-icon" />
@@ -141,7 +145,7 @@ export default function AdminAddForm() {
                     <button className="button add-accommodation">{submitting ? "Adding..." : "Add accommodation"}</button>            
 					<div className="button-background"></div>
                 </div>
-            </form>
+            </form> : <ErrorMessage>{"You have to log in to add accommodations."}</ErrorMessage> }
         </div>
     );
 }

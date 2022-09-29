@@ -1,13 +1,19 @@
 import { Link } from "react-router-dom";
-import { HeadingH1, HeadingH2 } from "../layout/Headings";
-import { Paragraph } from "../layout/Paragraph"; 
 import { BsHouseDoor, BsPlusSquare } from "react-icons/bs";
 import { TbMail } from "react-icons/tb";
+import { useContext } from "react";
+import { HeadingH1, HeadingH2 } from "../layout/Headings";
+import { Paragraph } from "../layout/Paragraph"; 
+import AuthContext from "../context/AuthContext";
+import ErrorMessage from "../common/ErrorMessage";
 
 export default function Admin() {
+    const [auth] = useContext(AuthContext);
+
     return (
         <div className="pageContainer">
             <HeadingH1 content="Administrating"/>
+            { auth ? 
             <div className="adminContainer">
                 <div className="adminContainer__content">
                     <Link to="/adminmessages" className="adminContainer__content-link">
@@ -36,7 +42,7 @@ export default function Admin() {
                         <Paragraph content="Create new accommodations." />
                     </Link>
                 </div>
-            </div>
+            </div> : <ErrorMessage>{"You have to log in to administrate."}</ErrorMessage> }
         </div>
     )
 }

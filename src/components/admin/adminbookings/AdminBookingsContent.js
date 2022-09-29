@@ -1,20 +1,23 @@
+import { useContext } from "react";
 import { HeadingH2 } from "../../layout/Headings";
 import useFetch from "../../hooks/useFetch";
 import { API_bookings } from "../../../constants/Api";
 import { Paragraph } from "../../layout/Paragraph";
 import ErrorMessage from "../../common/ErrorMessage";
 import LoadingMessage from "../../common/LoadingMessage";
-import { BsHouseDoor } from 'react-icons/bs';
+import { BsHouseDoor } from "react-icons/bs";
 import AdminBookingsDelete from "./AdminBookingsDelete";
+import AuthContext from "../../context/AuthContext";
 
 export default function AdminBookingsContent() {
     const { data: bookings, loading, error } = useFetch(API_bookings);
-
+    const [auth] = useContext(AuthContext);
+    
     return (
         <>
             { error && <ErrorMessage>An error has occured {error}</ErrorMessage>}
             { loading && <LoadingMessage content="Loading bookings ..." />}
-            { bookings && <div className="adminContainer">
+            { auth ? bookings && <div className="adminContainer">
                 {bookings.map((booking) => (              
                     <div key={booking.id} className="adminContainer__content bookings">  
                         <div className="adminContainer__heading-container">
@@ -49,7 +52,7 @@ export default function AdminBookingsContent() {
                         <AdminBookingsDelete id={booking.id} />
                     </div>
                 ))}
-            </div>}   
+            </div> : <ErrorMessage>{"You have to log in to see bookings."}</ErrorMessage>  }   
         </>      
     )
 }
